@@ -1,0 +1,19 @@
+variables:
+	{glow.mode.%player%} = "False"
+
+command /glow:
+	aliases: gl
+	permission: op
+	trigger:
+		if player does not have permission "glow.enable":
+			message "&8&l[&bCheckup&8&l] &7Sorry you dont have permissions to use &cGlow"
+			stop 
+		if {glow.mode.%player%} is "False":
+			message "&8&l[&bGlow&8&l] &7Glowing now enabled!"
+			set {glow.mode.%player%} to "True"
+			apply glowing to the player for 100000 seconds
+		else:
+			if {glow.mode.%player%} is "True":
+				message "&8&l[&bGlow&8&l] &7Glowing now disabled!"
+				set {glow.mode.%player%} to "False"
+				remove glowing from the player
